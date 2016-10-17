@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :users do
+  namespace :memos do
     get "/" , :action => "index"
   end
 end
