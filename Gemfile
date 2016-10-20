@@ -8,6 +8,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mysql2'
 gem 'annotate'
 gem 'rack-cors'
+gem 'jwt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
