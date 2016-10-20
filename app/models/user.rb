@@ -16,7 +16,10 @@
 class User < ApplicationRecord
   has_secure_password
 
-  before_create do
-    self
+  validates :username, :presence => true
+  validates :password, :confirmation => true
+
+  def authenticate(unencrypted_password)
+    BCrypt::Password.new(password_digest) == unencrypted_password && true
   end
 end
