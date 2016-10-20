@@ -1,5 +1,7 @@
+
+
 Memo.create(
-  # :slug: 'slug',  # auto fill
+  # :slug: 'slug',  # filled automatically by random string
   title: 'hoge1',
   digest: 'digest1',
   hidden: false,
@@ -8,8 +10,10 @@ Memo.create(
   content: 'hoge hoge hoge'
 )
 
-User.create(
-  username: 'ken',
-  password: 'hogehoge',
-  password_confirmation: 'hogehoge'
-)
+if User.where(username: 'ken').count < 1
+  User.create(
+    username: 'ken',
+    password: 'hogehoge',
+    password_confirmation: 'hogehoge'
+  )
+end

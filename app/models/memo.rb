@@ -17,12 +17,18 @@
 #
 #  index_memos_on_slug  (slug) UNIQUE
 #
-
-
-require "securerandom"
+#
 
 class Memo < ApplicationRecord
-  before_save do
+  validates :slug, presence: true, uniqueness: true, format: {with: /[a-z0-9_-]{1,}/}
+  validates :title, presence: true, allow_blank: false
+  validates :digest, presence: true
+  validates :hidden, inclusion: {in: [true, false]}
+  validates :draft, inclusion: {in: [true, false]}
+  validates :image_url, presence: true, allow_blank: true
+  validates :content, presence: true, allow_blank: false
+
+  before_validation do
     if self.slug.nil? or self.slug.empty?
       self.slug = SecureRandom.hex 12
     end
