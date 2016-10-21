@@ -8,12 +8,11 @@ class MemosController < ApplicationController
       query = {draft: false}
     end
 
-    memos = Memo.where query
-    render json: memos
+    @memos = Memo.where query
   end
 
   def create
-    memo = Memo.new(
+    @memo = Memo.new(
       slug: params[:slug],
       title: params[:title],
       digest: params[:digest],
@@ -22,17 +21,11 @@ class MemosController < ApplicationController
       image_url: params[:image_url],
       content: params[:content]
     )
-    if memo.save
-      render json: memo
-    else
-      render json: {
-        errors: memo.errors
-      }
-    end
+    @memo.save
   end
 
   def update
-    memo = Memo.update(
+    @memo = Memo.update(
       slug: params[:slug],
       title: params[:title],
       digest: params[:digest],
@@ -41,13 +34,6 @@ class MemosController < ApplicationController
       image_url: params[:image_url],
       content: params[:content]
     )
-    if memo.errors
-      render json: {
-        errors: memo.errors
-      }
-    else
-      render json: memo
-    end
   end
 
   def destroy

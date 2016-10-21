@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
+
+  namespace :memos, defaults: { format: :json } do
+    get '/', action: 'index'
+    post '/', action: 'create'
+    patch '/:id', action: 'update'
+    delete '/:id', action: 'destroy'
+  end
+
+  namespace :users, defaults: { format: :json } do
+    get '/', action: 'index'
+  end
+
   constraints filename: /.*/ do
-  # constraints format: // do
-  # scope format: false do
-    namespace :memos do
-      get '/', action: 'index'
-      post '/', action: 'create'
-      patch '/:id', action: 'update'
-      delete '/:id', action: 'delete'
-    end
-
-    namespace :users do
-      get '/', action: 'index'
-    end
-
-    namespace :files do
+    namespace :files, defaults: { format: :json } do
       get '/', action: 'index'
       post '/', action: 'create'
       post '/rename', action: 'rename'
-      delete '/:filename', action: 'delete'
+      delete '/:filename', action: 'destroy'
     end
   end
 
-  # resources :files, param: :filename
-  resource :session
+  namespace :session, defaults: { format: :json } do
+    get '/', action: 'index'
+    post '/', action: 'create'
+  end
 end

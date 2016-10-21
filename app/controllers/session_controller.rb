@@ -4,7 +4,7 @@ class SessionController < ApplicationController
     @user = @current_user
   end
 
-  def new
+  def create
     user = User.where(username: params[:username]).first
     if user && user.authenticate(params[:password])
       secret = Rails.application.secrets.secret_key_base

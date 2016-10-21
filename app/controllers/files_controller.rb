@@ -13,15 +13,18 @@ class FilesController < ApplicationController
   end
 
   def create
-    params[:file].each do |filename, file|
+    files = []
+    params.each do |filename, file|
       if not file.instance_of? ActionDispatch::Http::UploadedFile
-        return
+        next
       end
-      File.open(File.join(Settings.upload_dir, filename), 'wb') { |f|
+      filepath = File.join(Settings.upload_dir, filename)
+      File.open(filepath, 'wb') { |f|
         f.write(file.read)
       }
+      files.push filepath
     end
-    head 204
+    render json: files.map! {|f| readStat f}
   end
 
   def rename
@@ -35,7 +38,7 @@ class FilesController < ApplicationController
     render json: readStat(newPath)
   end
 
-  def delete
+  def destroy
     filepath = File.join(Settings.upload_dir, params[:filename])
     if not File.exist? filepath
       head 404
