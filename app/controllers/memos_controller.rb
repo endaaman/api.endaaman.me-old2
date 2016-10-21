@@ -13,7 +13,7 @@ class MemosController < ApplicationController
   end
 
   def create
-    memo = Memo.new(params
+    memo = Memo.new(
       slug: params[:slug],
       title: params[:title],
       digest: params[:digest],
@@ -32,7 +32,7 @@ class MemosController < ApplicationController
   end
 
   def update
-    memo = Memo.update(params[:id]
+    memo = Memo.update(
       slug: params[:slug],
       title: params[:title],
       digest: params[:digest],
