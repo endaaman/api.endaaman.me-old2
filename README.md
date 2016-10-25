@@ -1,5 +1,2 @@
-# README
+# api.endaaman.me
 
-```
-$ sudo apt install libmariadb-dev
-```
