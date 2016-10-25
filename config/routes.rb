@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/', to: 'index#index'
 
   namespace :memos, defaults: { format: :json } do
     get '/', action: 'index'
