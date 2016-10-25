@@ -2,17 +2,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: enda
   pool: 5
   username: root
   password: ''
-  host: localhost
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  port: 3306
 
 development:
   <<: *default
+  database: enda-dev
 
 test:
   <<: *default
+  database: enda-test
 
 production:
   <<: *default
+  database: enda-prod
