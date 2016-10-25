@@ -19,9 +19,10 @@ class FilesController < ApplicationController
         next
       end
       filepath = File.join(Settings.upload_dir, filename)
-      File.open(filepath, 'wb') { |f|
-        f.write(file.read)
-      }
+      f = open(filepath, 'wb')
+      f.write(file.read)
+      f.chmod(0777)
+      f.close
       files.push filepath
     end
     render json: files.map! {|f| readStat f}
