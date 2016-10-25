@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: enda-dev
+  database: enda_dev
 
 test:
   <<: *default
-  database: enda-test
+  database: enda_test
 
 production:
   <<: *default
-  database: enda-prod
+  database: enda_prod
