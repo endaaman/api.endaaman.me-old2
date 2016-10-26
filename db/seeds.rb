@@ -1,14 +1,13 @@
-
-
-Memo.create(
-  # :slug: 'slug',  # filled automatically by random string
-  title: 'hoge1',
-  digest: 'digest1',
-  hidden: false,
-  draft: false,
-  image_url: '',
-  content: 'hoge hoge hoge'
-)
+if Memo.count < 1
+  Memo.create(
+    title: 'hoge1',
+    digest: 'digest1',
+    hidden: false,
+    draft: false,
+    image_url: '',
+    content: 'hoge hoge hoge'
+  )
+end
 
 if User.where(username: 'ken').count < 1
   User.create(
