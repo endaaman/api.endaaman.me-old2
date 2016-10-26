@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017155027) do
+ActiveRecord::Schema.define(version: 20161026060703) do
 
   create_table "memos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "slug",                                     null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161017155027) do
     t.text     "content",    limit: 65535,                 null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "hex",                                      null: false
     t.index ["slug"], name: "index_memos_on_slug", unique: true, using: :btree
   end
 

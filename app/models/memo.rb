@@ -12,15 +12,16 @@
 #  content    :text(65535)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  hex        :string(255)      not null
 #
 # Indexes
 #
 #  index_memos_on_slug  (slug) UNIQUE
 #
-#
 
 class Memo < ApplicationRecord
   validates :slug, presence: true, uniqueness: true, format: {with: /[a-z0-9_-]{1,}/}
+  validates :hex, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false
   validates :digest, presence: true, allow_blank: true
   validates :hidden, inclusion: {in: [true, false]}
@@ -29,8 +30,11 @@ class Memo < ApplicationRecord
   validates :content, presence: true, allow_blank: false
 
   before_validation do
+    if self.hex.nil? or self.hex.empty?
+      self.hex = SecureRandom.hex 12
+    end
     if self.slug.nil? or self.slug.empty?
-      self.slug = SecureRandom.hex 12
+      self.slug = self.hex
     end
     self
   end
