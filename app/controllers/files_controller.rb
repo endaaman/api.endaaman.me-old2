@@ -9,6 +9,7 @@ class FilesController < ApplicationController
         files.push(stat)
       end
     end
+    files.sort! { |a, b| a[:name].casecmp b[:name] }
     render json: files
   end
 
