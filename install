@@ -1,4 +1,0 @@
-#!/bin/bash
-
-bundle install --path .bundle/gems --jobs=4
-
