@@ -21,7 +21,8 @@ class MemosController < ApplicationController
       image_url: params[:image_url],
       content: params[:content]
     )
-    @memo.save
+    success = @memo.save
+    render status: success ? 201 : 422
   end
 
   def update
