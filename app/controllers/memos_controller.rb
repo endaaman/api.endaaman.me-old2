@@ -26,7 +26,8 @@ class MemosController < ApplicationController
   end
 
   def update
-    @memo = Memo.update(
+    @memo = Memo.find_by id: params[:id]
+    @memo.update(
       slug: params[:slug],
       title: params[:title],
       digest: params[:digest],
