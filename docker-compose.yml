@@ -1,0 +1,8 @@
+enda-api:
+  image: endaaman/api.endaaman.me
+  environment:
+    VIRTUAL_HOST: api.endaaman.me,api.enda.dev
+    SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
+    DB_HOST: "172.17.0.1"
+  volumes:
+    - /var/uploaded/enda:/var/uploaded/enda
