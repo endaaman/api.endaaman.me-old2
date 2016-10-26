@@ -22,7 +22,7 @@ end
 Memo.destroy_all
 
 
-for m in memos.reverse
+for m in memos
   memo = Memo.new(
     slug: m['slug'],
     hex: m['_id']['$oid'],
