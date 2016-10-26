@@ -22,7 +22,7 @@
 class Memo < ApplicationRecord
   validates :slug, presence: true, uniqueness: true, format: {with: /[a-z0-9_-]{1,}/}
   validates :title, presence: true, allow_blank: false
-  validates :digest, presence: true
+  validates :digest, presence: true, allow_blank: true
   validates :hidden, inclusion: {in: [true, false]}
   validates :draft, inclusion: {in: [true, false]}
   validates :image_url, presence: true, allow_blank: true
