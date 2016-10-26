@@ -5,4 +5,4 @@ enda-api:
     SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
     DB_HOST: "172.17.0.1"
   volumes:
-    - /var/uploaded/enda:/var/uploaded/enda
+    - /var/shared/enda:/var/shared/enda
