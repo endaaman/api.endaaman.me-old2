@@ -1,6 +1,5 @@
-if @valid
-  json.merge! @memo.attributes, _id: @memo.id
-end
+json.merge! @memo.attributes
+json.set! :_id, "#{@memo.id}"
 
 if @memo.errors
   json.errors @memo.errors
