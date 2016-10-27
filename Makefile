@@ -14,7 +14,7 @@ serve:
 build:
 	docker build . -t endaaman/api.endaaman.me
 
-push:
+push: build
 	docker push endaaman/api.endaaman.me
 
 start: build
