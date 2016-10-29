@@ -1,5 +1,6 @@
 enda-api:
   image: endaaman/api.endaaman.me
+  container_name: enda-api
   environment:
     VIRTUAL_HOST: api.endaaman.me,api.enda.dev
     SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
