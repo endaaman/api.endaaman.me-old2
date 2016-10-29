@@ -1,15 +1,15 @@
-.PHONY: db
+.PHONY: server db install build push start stop
 
-install:
-	bundle install --path .bundle/gems --jobs=4
+serve:
+	rm -f tmp/pids/server.pid
+	bundle exec rails server -p 3000 -b 0.0.0.0
 
 db:
 	bundle exec rails db:create
 	bundle exec rails db:migrate
 
-serve:
-	rm -f tmp/pids/server.pid
-	bundle exec rails server -p 3000 -b 0.0.0.0
+install:
+	bundle install --path .bundle/gems --jobs=4
 
 build:
 	docker build . -t endaaman/api.endaaman.me
