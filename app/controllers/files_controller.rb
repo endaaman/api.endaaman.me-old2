@@ -22,7 +22,7 @@ class FilesController < ApplicationController
       filepath = File.join(Settings.upload_dir, filename)
       f = open(filepath, 'wb')
       f.write(file.read)
-      f.chmod(0777)
+      f.chmod(0666)
       f.close
       files.push filepath
     end
